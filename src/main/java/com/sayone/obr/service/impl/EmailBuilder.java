@@ -36,8 +36,8 @@ public class EmailBuilder {
      */
     public String buildUserActivateContent(String name,String link) {
         return "Dear "+name+",<br>"
-                + "Your  Email is updated . :<br>"
-//                + "<h3><a href="+link+" target=\"_self\">VERIFIED!!!</a></h3>"
+                + "Click the link to verify your email:<br>"
+                + "<h3><a href="+link+" target=\"_self\">VERIFIED!!!</a></h3>"
                 + "Thank you.<br>";
     }
 }

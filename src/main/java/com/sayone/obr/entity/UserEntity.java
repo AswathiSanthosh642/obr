@@ -37,7 +37,7 @@ public class UserEntity implements Serializable {
     private String emailVerificationToken;
 
     @Column
-    private Boolean emailVerification;
+    private boolean emailVerification;
 
     @Column(length = 120)
     private String address;
@@ -52,7 +52,7 @@ public class UserEntity implements Serializable {
     public UserEntity() {
     }
 
-    public UserEntity(String firstName, String lastName, String email, long phoneNumber, String role, String address, String userStatus,String emailVerificationToken,Boolean emailVerification) {
+    public UserEntity(String firstName, String lastName, String email, long phoneNumber, String role, String address, String userStatus,String emailVerificationToken,boolean emailVerification) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -153,11 +153,11 @@ public class UserEntity implements Serializable {
         this.book = book;
     }
 
-    public Boolean getEmailVerification() {
+    public boolean getEmailVerification() {
         return emailVerification;
     }
 
-    public void setEmailVerification(Boolean emailVerification) {
+    public void setEmailVerification(boolean emailVerification) {
         this.emailVerification = emailVerification;
     }
 

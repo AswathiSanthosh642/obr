@@ -205,8 +205,8 @@ public class UserServiceImpl implements UserService {
 //        System.out.println("token");
 //        System.out.println(token);
 //        UserEntity updatedToken = new UserEntity();
-//        updatedToken.setEmailVerificationToken(token);
-//        userRepository.save(updatedToken);
+        updatedUserDetails.setEmailVerificationToken(token);
+        userRepository.save(updatedUserDetails);
 
 //        userEntity.(token);
 
@@ -221,22 +221,22 @@ public class UserServiceImpl implements UserService {
         if(!status) throw new UserServiceException(WishlistErrors.EMAIL_FAIL.getErrorMessage());
             System.out.println("email send ................");
 //        userRepository.save(userEntity.get());s
-        Boolean verifier = verifyEmailToken(token);
-        if(!verifier) throw new UserServiceException(WishlistErrors.TOKEN_NOT_FOUND.getErrorMessage());
+//        Boolean verifier = verifyEmailToken(token);
+//        if(!verifier) throw new UserServiceException(WishlistErrors.TOKEN_NOT_FOUND.getErrorMessage());
 //        UserEntity updatedEmail = new UserEntity();
         updatedUserDetails.setEmail(emailId);
         return userRepository.save(updatedUserDetails);
     }
 
-    private Boolean verifyEmailToken(String token) {
+    public boolean verifyEmailToken(String token) {
 
-//        UserEntity userEntity = userRepository.findByEmailVerificationToken(token);
-//        if (userEntity == null)
-//            throw new UserServiceException(WishlistErrors.TOKEN_NOT_FOUND.getErrorMessage());
+        UserEntity userEntity = userRepository.findByEmailVerificationToken(token);
+        if (userEntity == null)
+            throw new UserServiceException(WishlistErrors.TOKEN_NOT_FOUND.getErrorMessage());
 
         if(Utils.hasTokenExpired(token)) throw new UserServiceException(WishlistErrors.EMAIL_TOKEN_EXPIRED.getErrorMessage());
-//        userEntity.setEmailVerificationToken(null);
-//        userEntity.setEmailVerification(Boolean.TRUE);
+        userEntity.setEmailVerificationToken(null);
+        userEntity.setEmailVerification(true);
         return true;
     }
 

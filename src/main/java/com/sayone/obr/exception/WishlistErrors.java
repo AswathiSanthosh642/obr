@@ -15,6 +15,8 @@ public enum WishlistErrors {
     EMAIL_FAIL("EMAIL SENDING FAILED !!!!!!!"),
     EMAIL_TOKEN_EXPIRED("Token has expired!!!"),
     TOKEN_NOT_FOUND("no token found."),
+    EMAIL_ADDRESS_NOT_VERIFIED("The email is not verified!!!"),
+    EMAIL_ADDRESS_VERIFIED("The email is verified!!!"),
     EMAIL_NOT_VALID("Please enter a valid email id");
 
 

@@ -5,6 +5,7 @@ import com.sayone.obr.entity.UserEntity;
 import com.sayone.obr.exception.ErrorMessages;
 import com.sayone.obr.exception.RequestException;
 import com.sayone.obr.exception.UserServiceException;
+import com.sayone.obr.exception.WishlistErrors;
 import com.sayone.obr.model.request.UserDetailsRequestModel;
 import com.sayone.obr.model.request.UserEmailRequestModel;
 import com.sayone.obr.model.response.UserRestModel;
@@ -14,6 +15,8 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,6 +47,16 @@ public class UserController {
         return returnValue;
 
 
+    }
+
+    @ApiImplicitParams({@ApiImplicitParam(name = "authorization",
+            value = "${userController.authorizationHeader.description}", paramType = "header")})
+    @GetMapping("users/updateEmail/verify")
+    public ResponseEntity<String> verifyEmailToken(@RequestParam(value = "token") String token) throws UserServiceException{
+        boolean isVerified = userService.verifyEmailToken(token);
+        if (!isVerified) throw new
+                UserServiceException(WishlistErrors.EMAIL_ADDRESS_NOT_VERIFIED.getErrorMessage());
+        return new ResponseEntity<String>(WishlistErrors.EMAIL_ADDRESS_VERIFIED.getErrorMessage(), HttpStatus.OK);
     }
 
 
