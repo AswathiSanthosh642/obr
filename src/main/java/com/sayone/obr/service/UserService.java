@@ -1,0 +1,36 @@
+package com.sayone.obr.service;
+
+import com.sayone.obr.dto.UserDto;
+import com.sayone.obr.entity.UserEntity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+public interface UserService extends UserDetailsService {
+
+   //user
+    UserDto createUser(UserDto user);
+
+    UserDto getUser(String email);
+
+    UserDto getUserByUserId(String userId);
+
+
+    UserDto updateUser( String userId,UserDto user);
+
+    void deleteUserById(String userId);
+
+  //publisher
+
+    UserDto getPublisherById(String userId);
+
+    UserDto updatePublisher(String userId, UserDto userDto);
+
+    void deletePublisher(String userId);
+
+    UserDto getAllPublishersByRole();
+
+    UserDto getAllUsersByRole();
+
+    void deleteUser(String userId);
+
+ UserEntity updateUserEmail(String emailId, UserDto userDto) throws Exception;
+}
