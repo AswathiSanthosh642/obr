@@ -33,4 +33,6 @@ public interface UserService extends UserDetailsService {
     void deleteUser(String userId);
 
  UserEntity updateUserEmail(String emailId, UserDto userDto) throws Exception;
+
+    boolean verifyEmailToken(String token);
 }

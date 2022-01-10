@@ -21,7 +21,7 @@ public class UserDto implements Serializable {
     private String encryptedPassword;
     private String address;
     private String role;
-    private  String emailVerification="Not Verified";
+    private  boolean emailVerification=false;
     private  String emailVerificationToken;
 
     public String getRole() {
@@ -113,11 +113,11 @@ public class UserDto implements Serializable {
         this.address = address;
     }
 
-    public String getEmailVerification() {
+    public boolean getEmailVerification() {
         return emailVerification;
     }
 
-    public void setEmailVerification(String emailVerification) {
+    public void setEmailVerification(boolean emailVerification) {
         this.emailVerification = emailVerification;
     }
 
